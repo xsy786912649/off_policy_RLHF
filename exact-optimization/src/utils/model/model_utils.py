@@ -7,7 +7,8 @@ from transformers import (
     AutoModelForCausalLM
 )
 from huggingface_hub import snapshot_download
-from transformers.deepspeed import HfDeepSpeedConfig
+#from transformers.deepspeed import HfDeepSpeedConfig
+from transformers.integrations.deepspeed import HfDeepSpeedConfig 
 
 from utils.utils import load_state_dict_into_model, print_rank_0
 
