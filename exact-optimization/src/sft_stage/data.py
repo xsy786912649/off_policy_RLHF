@@ -16,7 +16,7 @@ class SFTDataset(BaseDataset):
             if self.tokenizer.bos_token_id == chosen_tokens[0]:
                 chosen_tokens = chosen_tokens[1:]
 
-            assert(tokens[-len(chosen_tokens):] == chosen_tokens), {"tokens": tokens, "chosen tokens": chosen_tokens}
+            assert(tokens[-len(chosen_tokens)+1:] == chosen_tokens[1:]), {"tokens": tokens, "chosen tokens": chosen_tokens}
             prompt_tokens = tokens[:-len(chosen_tokens)]
             prompt_tokens = prompt_tokens[-self.max_seq_len:]
             assert(len(prompt_tokens) <= self.max_seq_len)
