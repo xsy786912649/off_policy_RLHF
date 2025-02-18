@@ -35,7 +35,7 @@ def parse_args():
     parser.add_argument("--dtype", type=str, default="fp16", help="fp32|fp16")
     parser.add_argument("--split", type=str, default="test", help="split to evaluate on (train/test)")
     parser.add_argument("--batch_size", type=int, default=4)
-    parser.add_argument("--max_length", type=int, default=512)
+    parser.add_argument("--max_length", type=int, default=512*2)
     parser.add_argument("--max_new_tokens", type=int, default=200)
     parser.add_argument("--top_k", type=int, default=0)
     parser.add_argument("--temp", type=float, default=1.0)
