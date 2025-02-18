@@ -9,10 +9,7 @@ class SFTDataset(BaseDataset):
         if inference:
             prompt = self.get_prompt(sample)
             chosen = self.get_chosen(sample)
-            print("prompt: ", prompt)
-            print("chosen: ", chosen)
-            input()
-            assert(chosen.strip() != ""), chosen
+            assert(chosen.strip() != ""), [prompt,chosen]
             tokens = self.tokenizer.encode(prompt + chosen)
             chosen_tokens = self.tokenizer.encode(chosen)
 
