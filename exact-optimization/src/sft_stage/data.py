@@ -11,6 +11,7 @@ class SFTDataset(BaseDataset):
             chosen = self.get_chosen(sample)
             #assert(chosen.strip() != ""), [prompt,chosen]
             if chosen.strip() == "":
+                print("empty chosen")
                 print([prompt,chosen])
                 chosen = "."
             tokens = self.tokenizer.encode(prompt + chosen)
