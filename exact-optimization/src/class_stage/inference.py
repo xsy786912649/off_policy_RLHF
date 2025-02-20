@@ -100,9 +100,10 @@ def main():
 
     dataset = ListDataset(texts_flat)
 
-    model.to(args.local_rank)
+    
     if not os.path.isfile(os.path.join(save_path, args.split + ".json")) or args.overwrite:
         # create pipeline and init ds
+        print(model.device)
         pipe = ClassifierModelPipeline(model=model, 
                                     tokenizer=tokenizer, 
                                     device=args.local_rank)
