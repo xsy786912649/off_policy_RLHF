@@ -78,8 +78,7 @@ def main():
     model = AutoModel.from_config(model_config)
     model = ClassifierModel(model, tokenizer)
     model.load_state_dict(torch.load(os.path.join(args.model_path, "pytorch_model.bin"), map_location='cpu'))
-    model.to(args.local_rank)
-    print(model.device)
+
 
     # load data
     samples = load_data(args.data_path, args.split)
