@@ -100,7 +100,7 @@ def main():
 
     dataset = ListDataset(texts_flat)
 
-    
+    model.to(args.local_rank)
     if not os.path.isfile(os.path.join(save_path, args.split + ".json")) or args.overwrite:
         # create pipeline and init ds
         pipe = ClassifierModelPipeline(model=model, 
