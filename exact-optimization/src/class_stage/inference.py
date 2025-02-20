@@ -78,7 +78,8 @@ def main():
     model = AutoModel.from_config(model_config)
     model = ClassifierModel(model, tokenizer)
     model.load_state_dict(torch.load(os.path.join(args.model_path, "pytorch_model.bin"), map_location='cpu'))
-    
+    model.to(args.local_rank)
+
     # load data
     samples = load_data(args.data_path, args.split)
     if args.eval_num == -1:
@@ -103,7 +104,6 @@ def main():
     
     if not os.path.isfile(os.path.join(save_path, args.split + ".json")) or args.overwrite:
         # create pipeline and init ds
-        print(model.device)
         pipe = ClassifierModelPipeline(model=model, 
                                     tokenizer=tokenizer, 
                                     device=args.local_rank)
