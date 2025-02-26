@@ -475,8 +475,7 @@ def main():
             if (step + 1) % args.max_iter_step == 0:
                 print_rank_0(f"Finished iteration {args.max_iter_step}, stop!", args.global_rank)
                 exit()
-        
-    
+            
 
 if __name__ == "__main__":
     main()
