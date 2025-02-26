@@ -468,8 +468,8 @@ def main():
             
             if (step + 1) % save_step_interval == 0:
                 
-
                 save_model(args, model, tokenizer, f"ckpt{ckpt_count}")
+                print(f"Saved model checkpoint {ckpt_count}")
                 ckpt_count += 1
 
             if (step + 1) % args.max_iter_step == 0:
