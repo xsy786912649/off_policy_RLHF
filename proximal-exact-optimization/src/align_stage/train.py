@@ -412,7 +412,6 @@ def main():
     print(f"save_step_interval: {save_step_interval}")
     print(f"max_iter_step: {args.max_iter_step}")
     print(f"len(train_dataloader): {len(train_dataloader)}")
-    input()
     
     ckpt_count = 1
     for epoch in range(args.num_train_epochs):
