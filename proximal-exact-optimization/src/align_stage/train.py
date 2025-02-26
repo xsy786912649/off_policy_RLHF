@@ -407,6 +407,12 @@ def main():
             save_step_interval = len(train_dataloader) // args.num_save_checkpoint 
     if args.max_iter_step == -1:
         args.max_iter_step = len(train_dataloader)
+
+    print(f"num_save_checkpoint: {args.num_save_checkpoint}")
+    print(f"save_step_interval: {save_step_interval}")
+    print(f"max_iter_step: {args.max_iter_step}")
+    print(f"len(train_dataloader): {len(train_dataloader)}")
+    input()
     
     ckpt_count = 1
     for epoch in range(args.num_train_epochs):
