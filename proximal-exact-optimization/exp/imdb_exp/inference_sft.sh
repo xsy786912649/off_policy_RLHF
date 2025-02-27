@@ -1,5 +1,5 @@
 deepspeed --include "localhost:$1" \
-          --master_port 1234 src/sft_stage/inference.py \
+          --master_port 1234 src/sft_stage/inference_faster.py \
                             --split $3 --model_path $4 \
                             --data_name_path $2 \
                             --prompt_num -1 \
