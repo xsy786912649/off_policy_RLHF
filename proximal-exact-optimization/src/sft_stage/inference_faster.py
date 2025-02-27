@@ -1,7 +1,5 @@
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
-from utils.data.data_utils import get_raw_dataset
-from utils.utils import get_tokenizer
 import argparse
 import json
 import os
@@ -12,8 +10,9 @@ import sys
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from data import SFTDataset
+from utils.data.data_utils import get_raw_dataset
 from utils.utils import get_tokenizer
+from data import SFTDataset
 
 # Remove unused imports and keep necessary ones
 
