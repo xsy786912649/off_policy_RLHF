@@ -25,7 +25,7 @@ eps=1
 grad_accum=4
 wd=0
 ZERO_STAGE=2
-num_save_checkpoint=10
+num_save_checkpoint=5
 save_step_interval=-1
 max_iter_step=-1
 
