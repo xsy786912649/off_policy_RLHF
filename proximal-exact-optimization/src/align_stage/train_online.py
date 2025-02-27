@@ -404,7 +404,7 @@ def main():
             
             save_step_interval = 1
         else:
-            save_step_interval = len(train_dataloader) // args.num_save_checkpoint 
+            save_step_interval = len(train_dataloader) // args.num_save_checkpoint * args.num_save_checkpoint
     if args.max_iter_step == -1:
         args.max_iter_step = len(train_dataloader)
     
@@ -466,16 +466,17 @@ def main():
                 print_throughput(model.module, args, end - start,
                                  args.global_rank)
             
-            if (step + 1) % save_step_interval == 0:
+            #    if (step + 1) % save_step_interval == 0:
                 
-                save_model(args, model, tokenizer, f"ckpt{ckpt_count}")
-                print(f"Saved model checkpoint {ckpt_count}")
-                ckpt_count += 1
+        save_model(args, model, tokenizer, f"ckpt{ckpt_count}")
+        print(f"Saved model checkpoint {ckpt_count}")
+        ckpt_count += 1
 
-            if (step + 1) % args.max_iter_step == 0:
-                print_rank_0(f"Finished iteration {args.max_iter_step}, stop!", args.global_rank)
-                exit()
-            
+        #     if (step + 1) % args.max_iter_step == 0:
+    print_rank_0(f"Finished training {args.num_train_epochs} epochs!", args.global_rank)
+    print_rank_0(f"Finished iteration {args.max_iter_step}, stop!", args.global_rank)
+    exit()
+
 
 if __name__ == "__main__":
     main()
