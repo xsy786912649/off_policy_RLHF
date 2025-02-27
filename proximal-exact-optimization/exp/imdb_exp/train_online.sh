@@ -51,7 +51,7 @@ fi
 deepspeed --include localhost:$dev --master_port $port \
 src/align_stage/train.py \
    --model_name_or_path $init_model_path \
-   --ref_name_or_path $init_model_path \
+   --ref_name_or_path $ref_model_path \
    --beta_r $beta_r \
    --beta_pi $beta_pi \
    --num_contrastive $num_contrastive \
