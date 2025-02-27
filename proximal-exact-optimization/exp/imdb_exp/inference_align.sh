@@ -2,7 +2,7 @@
 # - 1: device ids
 # - 2: model_path
 
-ckpts=(1 2 3 4 5 6 7 8 9 10)
+ckpts=(1 2 3 4 5)
 
 temp=0.8
 ref_temp=0.8
