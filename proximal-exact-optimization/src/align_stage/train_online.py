@@ -247,6 +247,10 @@ def parse_args():
                         type=int,
                         default=0,
                         help="If > 0, use LoRA for efficient training.")
+    parser.add_argument("--online_iter",
+                        type=int,
+                        default=1,
+                        help="online_iteration_numer.")
     parser.add_argument("--lora_module_name",
                         type=str,
                         default="decoder.layers.",
@@ -473,9 +477,9 @@ def main():
             
         #    if (step + 1) % save_step_interval == 0:
                 
-        save_model(args, model, tokenizer, f"ckpt{ckpt_count}")
-        print(f"Saved model checkpoint {ckpt_count}")
-        ckpt_count += 1
+        save_model(args, model, tokenizer, f"ckpt{args.online_iter}")
+        print(f"Saved model checkpoint {args.online_iter}")
+        #ckpt_count += 1
 
         #     if (step + 1) % args.max_iter_step == 0:
     print_rank_0(f"Finished training {args.num_train_epochs} epochs!", args.global_rank)
