@@ -1,6 +1,6 @@
 
 deepspeed --include "localhost:$1" \
-          --master_port 1234 src/align_stage/label_online_train.py \
+          --master_port 1234 src/rm_stage/label_online_train.py \
           --data_path $2 \
           --split $3 \
           --model_path $4 \
