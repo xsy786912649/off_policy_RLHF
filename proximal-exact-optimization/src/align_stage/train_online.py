@@ -407,6 +407,11 @@ def main():
             save_step_interval = len(train_dataloader) // args.num_save_checkpoint * args.num_save_checkpoint
     if args.max_iter_step == -1:
         args.max_iter_step = len(train_dataloader)
+
+    print(f"num_save_checkpoint: {args.num_save_checkpoint}")
+    print(f"save_step_interval: {save_step_interval}")
+    print(f"max_iter_step: {args.max_iter_step}")
+    print(f"len(train_dataloader): {len(train_dataloader)}")
     
     ckpt_count = 1
     for epoch in range(args.num_train_epochs):
@@ -466,7 +471,7 @@ def main():
                 print_throughput(model.module, args, end - start,
                                  args.global_rank)
             
-            #    if (step + 1) % save_step_interval == 0:
+        #    if (step + 1) % save_step_interval == 0:
                 
         save_model(args, model, tokenizer, f"ckpt{ckpt_count}")
         print(f"Saved model checkpoint {ckpt_count}")
@@ -476,7 +481,8 @@ def main():
     print_rank_0(f"Finished training {args.num_train_epochs} epochs!", args.global_rank)
     print_rank_0(f"Finished iteration {args.max_iter_step}, stop!", args.global_rank)
     exit()
-
+        
+    
 
 if __name__ == "__main__":
     main()
