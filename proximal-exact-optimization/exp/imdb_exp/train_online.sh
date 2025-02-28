@@ -56,6 +56,7 @@ src/align_stage/train_online.py \
    --beta_r $beta_r \
    --beta_pi $beta_pi \
    --num_contrastive $num_contrastive \
+   --online_iter $online_iter \
    --temp $temp \
    --max_iter_step $max_iter_step \
    --save_step_interval $save_step_interval \
