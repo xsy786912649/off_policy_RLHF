@@ -88,6 +88,12 @@ def parse_args():
         help="Batch size (per device) for the evaluation dataloader.",
     )
     parser.add_argument(
+        "--online_iter",
+        type=int,
+        default=1,
+        help="online_iteration_numer.")
+
+    parser.add_argument(
         "--num_save_checkpoint",
         type=int,
         default=1,
@@ -413,7 +419,7 @@ def main():
     print(f"max_iter_step: {args.max_iter_step}")
     print(f"len(train_dataloader): {len(train_dataloader)}")
     
-    ckpt_count = 1
+    #ckpt_count = 1
     for epoch in range(args.num_train_epochs):
         print_rank_0(
             f"Beginning of Epoch {epoch+1}/{args.num_train_epochs}, Total Micro Batches {len(train_dataloader)}",
@@ -473,9 +479,9 @@ def main():
             
         #    if (step + 1) % save_step_interval == 0:
                 
-        save_model(args, model, tokenizer, f"ckpt{ckpt_count}")
-        print(f"Saved model checkpoint {ckpt_count}")
-        ckpt_count += 1
+        save_model(args, model, tokenizer, f"ckpt{args.online_iter}")
+        print(f"Saved model checkpoint {args.online_iter}")
+        #ckpt_count += 1
 
         #     if (step + 1) % args.max_iter_step == 0:
     print_rank_0(f"Finished training {args.num_train_epochs} epochs!", args.global_rank)

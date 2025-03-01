@@ -1,0 +1,45 @@
+#1
+
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/sft
+
+#bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 test models/gpt2-large_imdb/sft
+
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train models/gpt2-large_imdb/rm label
+
+#bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft test models/gpt2-large_imdb/rm label
+
+bash exp/imdb_exp/train_offline.sh gpt2-large models/gpt2-large_imdb/sft exp/imdb_exp/data/imdb_prefix10_rw "exo-rw" 2 models/gpt2-large_imdb/sft 1
+
+#2
+
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/sft
+
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train models/gpt2-large_imdb/rm label
+
+bash exp/imdb_exp/train_offline.sh gpt2-large models/gpt2-large_imdb/align_exo-rw_nc2/ckpt1 exp/imdb_exp/data/imdb_prefix10_rw "exo-rw" 2 models/gpt2-large_imdb/sft 2
+
+#3
+
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/sft
+
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train models/gpt2-large_imdb/rm label
+
+bash exp/imdb_exp/train_offline.sh gpt2-large models/gpt2-large_imdb/align_exo-rw_nc2/ckpt2 exp/imdb_exp/data/imdb_prefix10_rw "exo-rw" 2 models/gpt2-large_imdb/sft 3
+
+#4
+
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/sft
+
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train models/gpt2-large_imdb/rm label
+
+bash exp/imdb_exp/train_offline.sh gpt2-large models/gpt2-large_imdb/align_exo-rw_nc2/ckpt3 exp/imdb_exp/data/imdb_prefix10_rw "exo-rw" 2 models/gpt2-large_imdb/sft 4
+
+#5
+
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/sft
+
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train models/gpt2-large_imdb/rm label
+
+bash exp/imdb_exp/train_offline.sh gpt2-large models/gpt2-large_imdb/align_exo-rw_nc2/ckpt4 exp/imdb_exp/data/imdb_prefix10_rw "exo-rw" 2 models/gpt2-large_imdb/sft 5
+
+bash exp/imdb_exp/inference_align.sh 0,1 models/gpt2-large_imdb/align_exo-rw_nc2

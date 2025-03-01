@@ -9,6 +9,7 @@ dataset_path=$3
 loss_type=$4
 num_contrastive=$5
 ref_model_path=$6
+online_iter=$7
 tb_path=tb_logs
 
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
@@ -56,6 +57,7 @@ src/align_stage/train_offline.py \
    --beta_pi $beta_pi \
    --num_contrastive $num_contrastive \
    --temp $temp \
+   --online_iter $online_iter \
    --max_iter_step $max_iter_step \
    --save_step_interval $save_step_interval \
    --num_save_checkpoint $num_save_checkpoint \
