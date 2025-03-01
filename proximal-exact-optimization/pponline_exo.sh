@@ -12,42 +12,42 @@ bash exp/imdb_exp/label_online_align_training.sh 0,1 exp/imdb_exp/data/imdb_pref
 bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/sft exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 1
 
 #2.1
-bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt1
+bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt1
 
 #2.2
 bash exp/imdb_exp/label_online_align_training.sh 0,1 exp/imdb_exp/data/imdb_prefix10_online train models/gpt2-large_imdb/rm label
 
 #2.3
-bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt1 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 2 
+bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt1 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 2 
 
 #3.1
-bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt2
+bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt2
 
 #3.2
 bash exp/imdb_exp/label_online_align_training.sh 0,1 exp/imdb_exp/data/imdb_prefix10_online train models/gpt2-large_imdb/rm label
 
 #3.3
-bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt2 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 3 
+bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt2 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 3 
 
 #4.1
-bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt3
+bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt3
 
 #4.2
 bash exp/imdb_exp/label_online_align_training.sh 0,1 exp/imdb_exp/data/imdb_prefix10_online train models/gpt2-large_imdb/rm label
 
 #4.3
-bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt3 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 4 
+bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt3 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 4 
 
 #5.1
-bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt4
+bash exp/imdb_exp/inference_online_align_training.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt4
 
 #5.2
 bash exp/imdb_exp/label_online_align_training.sh 0,1 exp/imdb_exp/data/imdb_prefix10_online train models/gpt2-large_imdb/rm label
 
 #5.3
-bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt4 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 5
+bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_online_pp-exo-rw_nc2/ckpt4 exp/imdb_exp/data/imdb_prefix10_online_rw "pp-exo-rw" 2 models/gpt2-large_imdb/sft 5
 
 #inference test
 
-bash exp/imdb_exp/inference_align.sh 0,1 models/gpt2-large_imdb/align_online_exo-rw_nc2
+bash exp/imdb_exp/inference_align.sh 0,1 models/gpt2-large_imdb/align_online_pp-exo-rw_nc2
 
