@@ -81,9 +81,9 @@ def ppr_dpo_loss(ref_logits,
 
     model_logprobs = torch.gather(logsm(model_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
     ref_logprobs = torch.gather(logsm(ref_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
-    last_logits = torch.gather(logsm(last_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
+    last_logprobs = torch.gather(logsm(last_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
 
-    estimated_rewards_prefix = (model_logprobs*(1+detla_beta_model) - ref_logprobs-detla_beta_model*last_logits).sum(1, keepdim=True)
+    estimated_rewards_prefix = (model_logprobs*(1+detla_beta_model) - ref_logprobs-detla_beta_model*last_logprobs).sum(1, keepdim=True)
 
     loss = 0.
     count = 0
@@ -186,9 +186,9 @@ def ppr_exact_loss(ref_logits,
 
     model_logprobs = torch.gather(logsm(model_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
     ref_logprobs = torch.gather(logsm(ref_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
+    last_logprobs = torch.gather(logsm(last_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
 
-
-    estimated_rewards_prefix = beta_model * (model_logprobs*(1+detla_beta_model) - ref_logprobs-detla_beta_model*last_logits).sum(1, keepdim=True)
+    estimated_rewards_prefix = beta_model * (model_logprobs*(1+detla_beta_model) - ref_logprobs-detla_beta_model*last_logprobs).sum(1, keepdim=True)
 
     loss = 0.
     count = 0
