@@ -42,4 +42,6 @@ bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train 
 
 bash exp/imdb_exp/train_offline.sh gpt2-large models/gpt2-large_imdb/align_exo-rw_nc2/ckpt4 exp/imdb_exp/data/imdb_prefix10_rw "exo-rw" 2 models/gpt2-large_imdb/sft 5
 
+#inference test
+
 bash exp/imdb_exp/inference_align.sh 0,1 models/gpt2-large_imdb/align_exo-rw_nc2

@@ -47,5 +47,7 @@ bash exp/imdb_exp/label_online_align_training.sh 0,1 exp/imdb_exp/data/imdb_pref
 #5.3
 bash exp/imdb_exp/train_online.sh gpt2-large models/gpt2-large_imdb/align_online_exo-rw_nc2/ckpt4 exp/imdb_exp/data/imdb_prefix10_online_rw "exo-rw" 2 models/gpt2-large_imdb/sft 5
 
+#inference test
+
 bash exp/imdb_exp/inference_align.sh 0,1 models/gpt2-large_imdb/align_online_exo-rw_nc2
 
