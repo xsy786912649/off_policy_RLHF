@@ -48,7 +48,7 @@ fi
 # training commands ==================================
 
 
-deepspeed --include localhost:$1 --master_port $port \
+deepspeed --include "localhost:$1" --master_port $port \
 src/align_stage/train_offline.py \
    --model_name_or_path $init_model_path \
    --ref_name_or_path $ref_model_path \
