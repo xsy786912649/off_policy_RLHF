@@ -15,7 +15,6 @@ tb_path=tb_logs
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
-dev=$1
 port=1481
 train_bsz=8
 eval_bsz=8
@@ -49,7 +48,7 @@ fi
 # training commands ==================================
 
 
-deepspeed --include localhost:$dev --master_port $port \
+deepspeed --include localhost:$1 --master_port $port \
 src/align_stage/train_offline.py \
    --model_name_or_path $init_model_path \
    --ref_name_or_path $ref_model_path \
