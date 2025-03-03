@@ -1,21 +1,21 @@
 #!/bin/bash
 
 # names and paths
-init_model_name=$1
-init_model_path=$2
+init_model_name=$2
+init_model_path=$3
 dataset_name=imdb/rw
-dataset_path=$3
+dataset_path=$4
 # options: exo-pref/exo-rw
-loss_type=$4
-num_contrastive=$5
-ref_model_path=$6
-online_iter=$7
+loss_type=$5
+num_contrastive=$6
+ref_model_path=$7
+online_iter=$8
 tb_path=tb_logs
 
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
-dev=0,1
+dev=$1
 port=1482
 train_bsz=8
 eval_bsz=8
