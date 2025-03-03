@@ -51,3 +51,12 @@ bash exp/imdb_exp/train_pponline.sh gpt2-large models/gpt2-large_imdb/align_onli
 
 bash exp/imdb_exp/inference_align.sh 0,1 models/gpt2-large_imdb/align_online_pp-exo-rw_nc2
 
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_online_pp-dpo-rw_nc2/ckpt1 test models/gpt2-large_imdb/class eval
+
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_online_pp-dpo-rw_nc2/ckpt2 test models/gpt2-large_imdb/class eval
+
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_online_pp-dpo-rw_nc2/ckpt3 test models/gpt2-large_imdb/class eval
+
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_online_pp-dpo-rw_nc2/ckpt4 test models/gpt2-large_imdb/class eval
+
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_online_pp-dpo-rw_nc2/ckpt5 test models/gpt2-large_imdb/class eval
