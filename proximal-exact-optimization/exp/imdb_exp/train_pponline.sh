@@ -15,7 +15,7 @@ tb_path=tb_logs
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
-port=1483
+port=1486
 train_bsz=8
 eval_bsz=8
 max_len=512

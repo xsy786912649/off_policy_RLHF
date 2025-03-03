@@ -13,7 +13,7 @@ do
     model_path="${2%/}"/ckpt${i}
 
     deepspeed --include "localhost:$1" \
-          --master_port 1235 src/align_stage/inference.py \
+          --master_port 1231 src/align_stage/inference.py \
                             --split test --model_path $model_path \
                             --prompt_num 512 \
                             --return_num 4 \
