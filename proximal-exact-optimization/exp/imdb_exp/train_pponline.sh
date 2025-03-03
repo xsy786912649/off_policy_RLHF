@@ -34,7 +34,7 @@ max_iter_step=-1
 beta_r=0.1
 beta_pi=0.1
 temp=0.8
-detla_beta_model=0.5
+detla_beta_model=1.0
 
 exp_name=${init_model_name}_${dataset_abbr}/align_online_${loss_type}_nc${num_contrastive}
 
