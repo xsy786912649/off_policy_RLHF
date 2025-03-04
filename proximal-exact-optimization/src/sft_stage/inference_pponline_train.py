@@ -50,9 +50,9 @@ def main():
 
     # prepare save path
     if args.prompt_num == -1:
-        save_path = get_data_path(args).rstrip("/") + f"_online"#_t{args.temp}_new{args.max_new_tokens}_return{args.return_num}"
+        save_path = get_data_path(args).rstrip("/") + f"_pponline"#_t{args.temp}_new{args.max_new_tokens}_return{args.return_num}"
     else:
-        save_path = get_data_path(args).rstrip("/") + f"_online"#_t{args.temp}_num{args.prompt_num}_new{args.max_new_tokens}_return{args.return_num}"
+        save_path = get_data_path(args).rstrip("/") + f"_pponline"#_t{args.temp}_num{args.prompt_num}_new{args.max_new_tokens}_return{args.return_num}"
     os.makedirs(save_path, exist_ok=True)
 
     # set seed
