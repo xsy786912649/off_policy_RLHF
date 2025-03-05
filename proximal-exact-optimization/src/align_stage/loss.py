@@ -189,10 +189,11 @@ def ppr_exact_loss(ref_logits,
     last_logprobs = torch.gather(logsm(last_logits)[:, :-1, :], 2, y_ids[:, 1:].unsqueeze(2)).squeeze(2) * attention_mask[:, 1:]
 
     estimated_rewards_prefix = beta_model * (model_logprobs - ref_logprobs/(1+detla_beta_model)-detla_beta_model*last_logprobs/(1+detla_beta_model)).sum(1, keepdim=True)
+    estimated_rewards_prefix2 = beta_model * (model_logprobs - last_logprobs).sum(1, keepdim=True)
 
     loss = 0.
     count = 0
-    for estimated_rewards_prefix_group, energy_labels_group, has_loss_mask_group in zip(estimated_rewards_prefix.split(N), 
+    for estimated_rewards_prefix_group, estimated_rewards_prefix2_group, energy_labels_group, has_loss_mask_group in zip(estimated_rewards_prefix.split(N), estimated_rewards_prefix2.split(N),
                                                                                         energy_labels.split(N), 
                                                                                         attention_mask[:, 1:].bool().split(N)):
         
@@ -210,8 +211,9 @@ def ppr_exact_loss(ref_logits,
         last_ids = torch.zeros(N, 1).long().to(device)
 
         log_est_rewards_prefix_draw = estimated_rewards_prefix_group.gather(1, last_ids).log_softmax(0)
+        log_est_rewards_prefix_draw2 = estimated_rewards_prefix2_group.gather(1, last_ids).log_softmax(0)
 
-        loss = loss + (log_est_rewards_prefix_draw.exp() * (log_est_rewards_prefix_draw - energy_labels_group)).sum(0).mean()
+        loss = loss + (log_est_rewards_prefix_draw2.exp() * (log_est_rewards_prefix_draw - energy_labels_group)).sum(0).mean()
         count += 1
     
     return loss / count
