@@ -22,6 +22,10 @@ for i in [1,2,3,4,5]:
 
     win_total = 0
 
+    win_total_chosen = 0
+
+    total_reward = 0
+
     for j in range(len(data)):
         line = data[j]
         line2 = data2[j]
@@ -29,15 +33,32 @@ for i in [1,2,3,4,5]:
         rewards_win=[row[0] for row in line2["scores_texts"]]
 
         win_numer_temp=0
+        win_choose_temp=0
+        reward_temp = 0
         for reward000 in rewards_sft:
             for reward111 in rewards_win:
                 if reward111 >= reward000:
                     win_numer_temp += 1
         win_total += win_numer_temp / (len(rewards_sft) * len(rewards_win))
 
+
+        for reward111 in rewards_win:
+            if rewards_win >= max(reward000):
+                win_choose_temp += 1
+        win_total_chosen += win_choose_temp / len(rewards_win)
+
+        for reward111 in rewards_win:
+            reward_temp += reward111
+        total_reward += reward_temp / len(rewards_win)
+
+
+                
+
     print("--------------------")
     print("Checkpoint_finish",i)
     print("win_total",win_total/total_number)
+    print("win_total_chosen",win_total_chosen/total_number)
+    print("total_reward",total_reward/total_number)
     print("--------------------")
 
 
