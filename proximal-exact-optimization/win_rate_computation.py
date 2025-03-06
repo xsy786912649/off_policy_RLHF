@@ -43,7 +43,7 @@ for i in [1,2,3,4,5]:
 
 
         for reward111 in rewards_win:
-            if rewards_win >= max(reward000):
+            if rewards_win >= max(rewards_sft):
                 win_choose_temp += 1
         win_total_chosen += win_choose_temp / len(rewards_win)
 
