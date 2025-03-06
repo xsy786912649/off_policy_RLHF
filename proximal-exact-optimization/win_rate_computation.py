@@ -20,8 +20,8 @@ for i in [1,2,3,4,5]:
     for j in range(len(data)):
         line = data[j]
         line2 = data2[j]
-        print(line["scores_texts"])
-        print(line2["scores_texts"])
+        print(line["scores_texts"][:,0])
+        print(line2["scores_texts"][:,0])
         input()
 
     print("--------------------")
