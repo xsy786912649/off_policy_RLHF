@@ -16,14 +16,14 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
 port=1486
-train_bsz=8
+train_bsz=4
 eval_bsz=8
 max_len=512
 max_gen_len=200
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=8
+grad_accum=4
 wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
