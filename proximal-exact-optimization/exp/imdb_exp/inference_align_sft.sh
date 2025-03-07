@@ -22,3 +22,5 @@ deepspeed --include "localhost:$1" \
                         --max_new_tokens 500 \
                         --batch_size 32 \
                         --kernel_inject
+
+#bash exp/imdb_exp/inference_align_sft.sh 0,1 models/gpt2-large_imdb/sft
