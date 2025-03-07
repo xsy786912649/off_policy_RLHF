@@ -2,11 +2,11 @@
 
 bash exp/hh_exp/inference_sft.sh 0,1 hh/sft:exp/hh_exp/data/hh train models/pythia-2.8b_hh/sft
 
-#bash exp/hh_exp/inference_sft.sh 0,1 hh/sft:exp/hh_exp/data/hh test models/pythia-2.8b_hh/sft
+bash exp/hh_exp/inference_sft.sh 0,1 hh/sft:exp/hh_exp/data/hh test models/pythia-2.8b_hh/sft
 
 bash exp/hh_exp/inference_rm.sh 0,1 exp/hh_exp/data/hh_sft train models/pythia-2.8b_hh/rm label
 
-#bash exp/hh_exp/inference_rm.sh 0,1 exp/hh_exp/data/hh_sft test models/pythia-2.8b_hh/rm label
+bash exp/hh_exp/inference_rm.sh 0,1 exp/hh_exp/data/hh_sft test models/pythia-2.8b_hh/rm label
 
 bash exp/hh_exp/train_offline.sh 0,1 pythia-2.8b models/pythia-2.8b_hh/sft exp/hh_exp/data/hh_rw "dpo-pref" 2 models/pythia-2.8b_hh/sft 1
 
