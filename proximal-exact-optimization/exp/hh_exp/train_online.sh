@@ -3,7 +3,7 @@
 # names and paths
 init_model_name=$2
 init_model_path=$3
-dataset_name=imdb/rw
+dataset_name=hh/rw
 dataset_path=$4
 # options: exo-pref/exo-rw
 loss_type=$5
