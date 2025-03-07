@@ -1,19 +1,20 @@
 #!/bin/bash
 
 # names and paths
-init_model_name=$1
-init_model_path=$2
+init_model_name=$2
+init_model_path=$3
 dataset_name=hh/rw
-dataset_path=$3
+dataset_path=$4
 # options: exo-pref/exo-rw
-loss_type=$4
-num_contrastive=$5
+loss_type=$5
+num_contrastive=$6
+ref_model_path=$7
+online_iter=$8
 tb_path=tb_logs
 
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
-dev=0,1,2,3
 port=1484
 train_bsz=8
 eval_bsz=8
@@ -47,14 +48,15 @@ fi
 # training commands ==================================
 
 
-deepspeed --include localhost:$dev --master_port $port \
-src/align_stage/train.py \
+deepspeed --include "localhost:$1" --master_port $port \
+src/align_stage/train_offline.py \
    --model_name_or_path $init_model_path \
-   --ref_name_or_path $init_model_path \
+   --ref_name_or_path $ref_model_path \
    --beta_r $beta_r \
    --beta_pi $beta_pi \
    --num_contrastive $num_contrastive \
    --temp $temp \
+   --online_iter $online_iter \
    --max_iter_step $max_iter_step \
    --save_step_interval $save_step_interval \
    --num_save_checkpoint $num_save_checkpoint \
