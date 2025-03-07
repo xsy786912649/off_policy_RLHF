@@ -7,6 +7,6 @@ deepspeed --include "localhost:$1" \
                             --max_len 512 \
                             --temp 0.8 \
                             --return_num 2 \
-                            --batch_size 192 \
+                            --batch_size 128 \
 
                             
