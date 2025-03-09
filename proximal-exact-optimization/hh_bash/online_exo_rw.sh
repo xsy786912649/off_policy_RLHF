@@ -61,4 +61,4 @@ bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models
 
 bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_exo-rw_nc2/ckpt5 test models/pythia-2.8b_hh/rm eval
 
-
+python hh_bash/win_rate_computation.py online_exo-rw

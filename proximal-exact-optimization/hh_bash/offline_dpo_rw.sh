@@ -56,3 +56,4 @@ bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models
 
 bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_dpo-rw_nc2/ckpt5 test models/pythia-2.8b_hh/rm eval
 
+python hh_bash/win_rate_computation.py dpo-rw
