@@ -52,12 +52,12 @@ bash exp/hh_exp/train_online.sh 4,5,6,7 pythia-2.8b models/pythia-2.8b_hh/align_
 
 bash exp/hh_exp/inference_align.sh 4,5,6,7 models/pythia-2.8b_hh/align_online_dpo-rw_nc2
 
-bash exp/hh_exp/inference_rm.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt1 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt1 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt2 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt2 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt3 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt3 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt4 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt4 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt5 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 4,5,6,7 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-rw_nc2/ckpt5 test models/pythia-2.8b_hh/rm eval
