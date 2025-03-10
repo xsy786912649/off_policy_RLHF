@@ -362,10 +362,10 @@ def main():
                                   collate_fn=train_dataset.collate,
                                   sampler=train_sampler,
                                   batch_size=args.per_device_train_batch_size)
-    eval_dataloader = DataLoader(eval_dataset,
-                                 collate_fn=eval_dataset.collate,
-                                 sampler=eval_sampler,
-                                 batch_size=args.per_device_eval_batch_size)
+    #eval_dataloader = DataLoader(eval_dataset,
+    #                             collate_fn=eval_dataset.collate,
+    #                             sampler=eval_sampler,
+    #                             batch_size=args.per_device_eval_batch_size)
     
     # Split weights in two groups, one with weight decay and the other not.
     optimizer_grouped_parameters = get_optimizer_grouped_parameters(
