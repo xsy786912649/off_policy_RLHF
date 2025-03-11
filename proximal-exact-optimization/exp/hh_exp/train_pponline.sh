@@ -23,7 +23,7 @@ max_gen_len=200
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=4
+grad_accum=8
 wd=0
 ZERO_STAGE=3
 num_save_checkpoint=-1
@@ -32,7 +32,7 @@ max_iter_step=-1
 
 # alignment config
 beta_r=0.1
-beta_pi=1.0
+beta_pi=0.5
 temp=0.8
 detla_beta_model=1.0
 

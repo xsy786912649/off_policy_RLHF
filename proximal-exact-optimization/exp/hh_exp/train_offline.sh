@@ -17,13 +17,13 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 # general
 port=1484
 train_bsz=4
-eval_bsz=8
+eval_bsz=4
 max_len=512
 max_gen_len=200
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=4
+grad_accum=8
 wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
@@ -32,7 +32,7 @@ max_iter_step=-1
 
 # alignment config
 beta_r=0.1
-beta_pi=1.0
+beta_pi=0.5
 temp=0.8
 
 exp_name=${init_model_name}_${dataset_abbr}/align_${loss_type}_nc${num_contrastive}
