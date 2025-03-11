@@ -31,7 +31,7 @@ save_step_interval=-1
 max_iter_step=-1
 
 # alignment config
-beta_r=0.5
+beta_r=0.1
 beta_pi=0.5
 temp=0.8
 
