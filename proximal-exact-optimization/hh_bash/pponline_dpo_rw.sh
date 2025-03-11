@@ -1,12 +1,12 @@
 #1.1
-bash exp/hh_exp/inference_pponline_align_training.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh train models/pythia-2.8b_hh/sft
+#bash exp/hh_exp/inference_pponline_align_training.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh train models/pythia-2.8b_hh/sft
 
-bash exp/hh_exp/inference_pponline_align_training.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh test models/pythia-2.8b_hh/sft
+#bash exp/hh_exp/inference_pponline_align_training.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh test models/pythia-2.8b_hh/sft
 
 #1.2
-bash exp/hh_exp/label_pponline_align_training.sh 0,1,2,3 exp/hh_exp/data/hh_pponline train models/pythia-2.8b_hh/rm label
+#bash exp/hh_exp/label_pponline_align_training.sh 0,1,2,3 exp/hh_exp/data/hh_pponline train models/pythia-2.8b_hh/rm label
 
-bash exp/hh_exp/label_pponline_align_training.sh 0,1,2,3 exp/hh_exp/data/hh_pponline test models/pythia-2.8b_hh/rm label
+#bash exp/hh_exp/label_pponline_align_training.sh 0,1,2,3 exp/hh_exp/data/hh_pponline test models/pythia-2.8b_hh/rm label
 
 #1.3
 bash exp/hh_exp/train_pponline.sh 0,1,2,3 pythia-2.8b models/pythia-2.8b_hh/sft exp/hh_exp/data/hh_pponline_rw "pp-dpo-rw" 2 models/pythia-2.8b_hh/sft 1
