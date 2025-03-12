@@ -15,6 +15,7 @@ tb_path=tb_logs
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
+#train_bsz * grad_accum * num_gpus = 4 * 8 * 4 = 128
 port=1485
 train_bsz=4
 eval_bsz=4
