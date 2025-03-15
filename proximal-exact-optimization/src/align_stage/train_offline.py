@@ -477,13 +477,14 @@ def main():
                 print_throughput(model.module, args, end - start,
                                  args.global_rank)
             
-        #    if (step + 1) % save_step_interval == 0:
+            if (step + 1) % args.max_iter_step == 0:
+                break
                 
         save_model(args, model, tokenizer, f"ckpt{args.online_iter}")
         print(f"Saved model checkpoint {args.online_iter}")
         #ckpt_count += 1
 
-        #     if (step + 1) % args.max_iter_step == 0:
+        
     print_rank_0(f"Finished training {args.num_train_epochs} epochs!", args.global_rank)
     print_rank_0(f"Finished iteration {args.max_iter_step}, stop!", args.global_rank)
     exit()
