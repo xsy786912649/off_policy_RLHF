@@ -11,10 +11,12 @@ print("--------------------")
 print("loss_type",loss_type)
 print("--------------------")
 path1="exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/sft/eval/test.json"
+path11="exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/sft/eval/test.json"
 for i in [1,2,3,4,5]:
     path2="exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_"+loss_type+"_nc2/ckpt"+str(i)+"/eval/test.json"
 
     data = json.load(open(path1, "r"))
+    data1 = json.load(open(path11, "r"))
     data2 = json.load(open(path2, "r"))
     assert len(data) == len(data2)
 
@@ -28,8 +30,10 @@ for i in [1,2,3,4,5]:
 
     for j in range(len(data)):
         line = data[j]
+        line1 = data1[j]
         line2 = data2[j]
         rewards_sft=[row[0] for row in line["scores_texts"]]
+        rewards_hh=[row[0] for row in line1["scores_texts"]]
         rewards_win=[row[0] for row in line2["scores_texts"]]
 
         win_numer_temp=0
@@ -43,7 +47,7 @@ for i in [1,2,3,4,5]:
 
 
         for reward111 in rewards_win:
-            if reward111 >= max(rewards_sft):
+            if reward111 >= max(rewards_hh):
                 win_choose_temp += 1
         win_total_chosen += win_choose_temp / len(rewards_win)
 

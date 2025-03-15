@@ -31,11 +31,11 @@ wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
 save_step_interval=-1
-max_iter_step=-1
+max_iter_step=700
 
 # alignment config
 beta_r=0.1
-beta_pi=0.5
+beta_pi=1.0
 temp=0.8
 detla_beta_model=1.0
 
