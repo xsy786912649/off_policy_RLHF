@@ -17,7 +17,7 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 # general
 #train_bsz * grad_accum * num_gpus = 4 * 4 * 8 = 128
 port=1486
-train_bsz=2
+train_bsz=4
 eval_bsz=4
 max_len=512
 max_gen_len=200
