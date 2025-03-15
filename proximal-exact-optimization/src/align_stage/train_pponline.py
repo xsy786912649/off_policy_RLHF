@@ -291,7 +291,7 @@ def main():
         deepspeed.init_distributed()
     
     args.global_rank = torch.distributed.get_rank()
-
+    
     tb_name, tb_path = args.tensorboard_name_path.split(":")
     ds_config = get_train_ds_config(offload=args.offload,
                                     dtype=args.dtype,
