@@ -75,6 +75,8 @@ def main():
     
     if args.prompt_num == -1:
         args.prompt_num = len(inference_samples)
+    else:
+        args.prompt_num = min(args.prompt_num, len(inference_samples))
     inference_samples = inference_samples[:args.prompt_num]
     print(f"number of samples: {len(inference_samples)}")
 
