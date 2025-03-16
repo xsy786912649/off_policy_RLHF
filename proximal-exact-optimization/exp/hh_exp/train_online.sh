@@ -35,7 +35,7 @@ max_iter_step=1400
 
 # alignment config
 beta_r=0.1
-beta_pi=1.0
+beta_pi=0.5
 temp=0.8
 
 exp_name=${init_model_name}_${dataset_abbr}/align_online_${loss_type}_nc${num_contrastive}
