@@ -58,7 +58,7 @@ def main():
     if args.mode == "eval":
         save_path = os.path.join(args.data_path, "eval")
     elif args.mode == "label":
-        save_path = args.data_path.rstrip("/")+"_rw"
+        save_path = args.data_path.rstrip("/").replace("sft", "rw")
     os.makedirs(save_path, exist_ok=True)
 
     # set seed 
