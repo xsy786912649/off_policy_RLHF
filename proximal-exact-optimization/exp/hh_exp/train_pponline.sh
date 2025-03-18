@@ -16,8 +16,7 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
 #train_bsz * grad_accum * num_gpus = 4 * 8 * 4 = 128
-#step = number / (train_bsz  * num_gpus)= 43200 / ( 4 *4 ) = 2700
-# max_iter_step = 1400
+#step = number / (train_bsz  * num_gpus)= 43200 / ( 4 *4 )/5 = 2700/5 = 540
 port=1486
 train_bsz=4
 eval_bsz=4
@@ -31,7 +30,7 @@ wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
 save_step_interval=-1
-max_iter_step=1400
+max_iter_step=-1
 
 # alignment config
 beta_r=0.1
