@@ -38,7 +38,7 @@ temp=0.8
 
 exp_name=${init_model_name}_${dataset_abbr}/${model_type}_${loss_type}_nc${num_contrastive}
 
-OUTPUT=models/$exp_name
+OUTPUT=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/$exp_name
 
 if [ -d "$OUTPUT" ]; then
     echo "Warning: Directory '$OUTPUT' already exists."

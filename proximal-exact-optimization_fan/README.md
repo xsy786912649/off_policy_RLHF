@@ -81,7 +81,7 @@ DATA_PATH=/local/path/to/sft/data
 
 bash exp/custom_exp/train_sft.sh $INIT_MODEL_NAME $INIT_MODEL_PATH $MODEL_TYPE $DATA_NAME $DATA_PATH
 ```
-Other hyperparameters for training can be specified in `exp/custom_exp/train_sft.sh`. The SFT model will be saved in `models/custom-model_custom-data/sft`.
+Other hyperparameters for training can be specified in `exp/custom_exp/train_sft.sh`. The SFT model will be saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/custom-model_custom-data/sft`.
 
 
 </details>
@@ -100,7 +100,7 @@ DEVICE_IDS=0,1,2,3
 # data name and data path concatenated by colon
 DATA_NAME_PATH=custom_data/sft:/local/path/to/sft/data
 # local path to SFT model
-MODEL_PATH=models/custom-model_custom-data/sft
+MODEL_PATH=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/custom-model_custom-data/sft
 
 
 # inference on train set
@@ -168,7 +168,7 @@ DATA_PATH=/local/path/to/pref/data
 bash exp/custom_exp/train_rm.sh $INIT_MODEL_NAME $INIT_MODEL_PATH $MODEL_TYPE $DATA_NAME $DATA_PATH
 ```
 
-Other hyperparameters for training can be specified in `exp/custom_exp/train_rm.sh`. The SFT model will be saved in `models/custom-model_custom-data/rm`.
+Other hyperparameters for training can be specified in `exp/custom_exp/train_rm.sh`. The SFT model will be saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/custom-model_custom-data/rm`.
 
 </details>
 
@@ -187,7 +187,7 @@ DEVICE_IDS=0,1,2,3
 # local path to the sft generated data
 DATA_PATH=/local/path/to/sft/gen/data
 # local path to the reward model
-MODEL_PATH=models/custom-model_custom-data/rm
+MODEL_PATH=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/custom-model_custom-data/rm
 
 # inference on train set
 SPLIT=train
