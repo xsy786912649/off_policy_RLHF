@@ -13,9 +13,12 @@ EXO essentially minimizes the reverse KL between the empirical distributions def
 ## Dependencies
 
 ```
-python >= 3.9.0
-transformers >= 4.34.1
-deepspeed >= 0.11.2
+python == 3.11.0
+transformers == 4.34.1
+deepspeed == 0.16.3
+numpy==1.26.4
+datasets
+tensorboard
 ```
 
 It is recommended to precomplie the required extensions when installing `deepspeed` (For more details refer to the [installation guideline of deepspeed](https://www.deepspeed.ai/tutorials/advanced-install/)):
