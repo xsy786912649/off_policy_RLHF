@@ -30,7 +30,7 @@ wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
 save_step_interval=-1
-max_iter_step=1400
+max_iter_step=-1
 
 # alignment config
 beta_r=0.1
