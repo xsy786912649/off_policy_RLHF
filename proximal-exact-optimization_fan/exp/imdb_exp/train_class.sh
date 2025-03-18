@@ -22,7 +22,7 @@ wd=0
 ZERO_STAGE=2
 
 
-OUTPUT=models/$exp_name
+OUTPUT=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/$exp_name
 
 if [ -d "$OUTPUT" ]; then
     echo "Warning: Directory '$OUTPUT' already exists."

@@ -23,4 +23,4 @@ deepspeed --include "localhost:$1" \
                         --batch_size 32 \
                         --kernel_inject
 
-#bash exp/imdb_exp/inference_align_sft.sh 0,1 models/gpt2-large_imdb/sft
+#bash exp/imdb_exp/inference_align_sft.sh 0,1 /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft

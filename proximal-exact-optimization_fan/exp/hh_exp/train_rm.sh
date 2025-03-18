@@ -26,7 +26,7 @@ OUTPUT=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/$exp_name
 
 
 if [ "$OUTPUT" == "" ]; then
-    OUTPUT=models/$exp_name
+    OUTPUT=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/$exp_name
 fi
 
 if [ -d "$OUTPUT" ]; then
