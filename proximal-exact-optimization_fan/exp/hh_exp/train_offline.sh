@@ -19,7 +19,7 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 #step = number / (train_bsz  * num_gpus)= 43200 / ( 8 *4 )/5 = 1350/5 = 270
 port=1484
 train_bsz=8
-eval_bsz=4
+eval_bsz=8
 max_len=512
 max_gen_len=200
 lr=1e-6
