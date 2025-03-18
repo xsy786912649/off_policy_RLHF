@@ -42,6 +42,7 @@ def parse_args():
     parser.add_argument("--return_num", type=int, default=4)
     parser.add_argument("--prompt_num", type=int, default=-1)
     parser.add_argument("--kernel_inject", action="store_true", help="true only for gpt-2")
+    parser.add_argument("--iteration", type=int, default=0)
     
     return parser.parse_args()
 
@@ -73,11 +74,17 @@ def main():
     elif args.split == "train":
         inference_samples = raw_dataset.get_train_data()
     
-    if args.prompt_num == -1:
-        args.prompt_num = len(inference_samples)
-    else:
+    if args.prompt_num != -1:
         args.prompt_num = min(args.prompt_num, len(inference_samples))
-    inference_samples = inference_samples[:args.prompt_num]
+        inference_samples = inference_samples[:args.prompt_num]
+    elif args.prompt_num == -1:
+        if args.iteration == 0:
+            args.prompt_num = len(inference_samples)
+            inference_samples = inference_samples[:args.prompt_num]
+        else:
+            args.prompt_num = int(len(inference_samples)/5)
+            inference_samples = inference_samples[(args.iteration-1)*args.prompt_num:args.iteration*args.prompt_num]
+          
     print(f"number of samples: {len(inference_samples)}")
 
     _inference_samples = []
