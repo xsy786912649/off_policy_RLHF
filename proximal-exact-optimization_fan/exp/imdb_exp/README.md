@@ -38,7 +38,7 @@ Inference on the (whole) train and test set using the learned SFT model. Default
 
 ```bash
 # train set
-bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train models/gpt2-large_imdb/sft
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
 
 # test set
 bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
