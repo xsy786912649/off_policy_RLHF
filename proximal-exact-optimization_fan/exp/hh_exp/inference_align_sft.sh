@@ -23,5 +23,7 @@ deepspeed --include "localhost:$1" \
                         --max_new_tokens 200 \
                         --batch_size 16 
 
-# bash exp/hh_exp/inference_align_sft.sh 0,1,2,3 /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
-# bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm eval
+
+#bash exp/hh_exp/inference_align_sft.sh 0,1,2,3 /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
+#bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm eval
+#bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm eval
