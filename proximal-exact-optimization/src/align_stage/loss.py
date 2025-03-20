@@ -21,6 +21,8 @@ def dpo_loss(ref_logits,
             beta_model=1.0,
             loss_type="dpo"):
     
+    log_epsilon=-10
+
     # prepare
     bsz = ref_logits.size(0)
     logsigmoid = LogSigmoid()
@@ -45,7 +47,13 @@ def dpo_loss(ref_logits,
         # prepare label
         if "rw" in loss_type:
             energy_labels_group = (energy_labels_group / beta).softmax(0)
-        
+        elif "pref" in loss_type:
+            if energy_labels_group[0][0] > energy_labels_group[1][0]:
+                energy_labels_group[0][0] = 0.
+                energy_labels_group[1][0] = log_epsilon
+            else:
+                energy_labels_group[1][0] = 0.
+                energy_labels_group[0][0] = log_epsilon 
 
         # num_contrastive * num_draw
         log_est_rewards_prefix_draw = (beta_model * estimated_rewards_prefix_group).log_softmax(0)
@@ -70,6 +78,8 @@ def ppr_dpo_loss(ref_logits,
             detla_beta_model=0.5,
             loss_type="dpo"):
     
+    log_epsilon = -10 
+    
     # prepare
     bsz = ref_logits.size(0)
     logsigmoid = LogSigmoid()
@@ -93,7 +103,13 @@ def ppr_dpo_loss(ref_logits,
         # prepare label
         if "rw" in loss_type:
             energy_labels_group = (energy_labels_group / beta).softmax(0)
-        
+        elif "pref" in loss_type:
+            if energy_labels_group[0][0] > energy_labels_group[1][0]:
+                energy_labels_group[0][0] = 0.
+                energy_labels_group[1][0] = log_epsilon
+            else:
+                energy_labels_group[1][0] = 0.
+                energy_labels_group[0][0] = log_epsilon        
 
         # num_contrastive * num_draw
         log_est_rewards_prefix_draw = (beta_model * estimated_rewards_prefix_group).log_softmax(0)
