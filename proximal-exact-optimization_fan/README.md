@@ -14,6 +14,7 @@ EXO essentially minimizes the reverse KL between the empirical distributions def
 
 ```
 python == 3.11.0
+torch == 2.4.1
 transformers == 4.34.1
 deepspeed == 0.16.3
 numpy==1.26.4
