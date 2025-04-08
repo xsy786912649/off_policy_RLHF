@@ -18,7 +18,7 @@ torch == 2.4.1
 transformers == 4.34.1
 deepspeed == 0.16.3
 numpy==1.26.4
-datasets
+datasets==2.13.2
 tensorboard
 ```
 
