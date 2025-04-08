@@ -10,4 +10,4 @@ deepspeed --include "localhost:$1" \
           --mode $5 \
 
 
-# bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-pref_nc2/ckpt1 test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm eval
+# bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_dpo-pref_nc2/ckpt1 test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm eval

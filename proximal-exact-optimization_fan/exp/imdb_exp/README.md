@@ -34,28 +34,28 @@ bash exp/imdb_exp/train_sft.sh gpt2-large /local/path/to/gpt2
 
 ### Generate from the SFT model
 
-Inference on the (whole) train and test set using the learned SFT model. Default sampling 2 completions given each prompt. The following commands are used to conduct inference on the train/test split using the trained SFT model saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft` (by default) with device ids `0,1`.
+Inference on the (whole) train and test set using the learned SFT model. Default sampling 2 completions given each prompt. The following commands are used to conduct inference on the train/test split using the trained SFT model saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft` (by default) with device ids `0,1`.
 
 ```bash
 # train set
-bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 train /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
 
 # test set
-bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
+bash exp/imdb_exp/inference_sft.sh 0,1 imdb/sft:exp/imdb_exp/data/imdb_prefix10 test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
 ```
 
 The generated data will be saved in `exp/imdb_exp/data/imdb_prefix10_sft`.
 
 ### Label preference by oracle reward model
 
-Label the preference on the SFT generated data using the oracle reward model. The following commands are used to conduct inference on the train/test split of the SFT generated dataset using the oracle reward model saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class` with device ids `0,1`.
+Label the preference on the SFT generated data using the oracle reward model. The following commands are used to conduct inference on the train/test split of the SFT generated dataset using the oracle reward model saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class` with device ids `0,1`.
 
 ```bash
 # train set
-bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class label_pref
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class label_pref
 
 # test set
-bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class label_pref
+bash exp/imdb_exp/inference_class.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class label_pref
 ```
 
 The inference results will be saved in `exp/imdb_exp/data/imdb_prefix10_pref`.
@@ -74,14 +74,14 @@ bash exp/imdb_exp/train_rm.sh gpt2-large /local/path/to/gpt2
 
 ### Compute reward by reward model
 
-Label the preference on the SFT generated data using the reward model. The following commands are used to conduct inference on the train/test split of the SFT generated dataset using the reward model saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/rm` with device ids `0,1`.
+Label the preference on the SFT generated data using the reward model. The following commands are used to conduct inference on the train/test split of the SFT generated dataset using the reward model saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/rm` with device ids `0,1`.
 
 ```bash
 # train set
-bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/rm label
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft train /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/rm label
 
 # test set
-bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/rm label
+bash exp/imdb_exp/inference_rm.sh 0,1 exp/imdb_exp/data/imdb_prefix10_sft test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/rm label
 ```
 
 The inference results will be saved in `exp/imdb_exp/data/imdb_prefix10_rw`.
@@ -104,7 +104,7 @@ Train the policy using the EXO algorithm, run commands:
 # Any causal HuggingFace model (`AutoModelForCausalLM` class)
 INIT_MODEL_NAME=gpt2-large
 # local path to the SFT model
-INIT_MODEL_PATH=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
+INIT_MODEL_PATH=/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft
 # local path to the training data, e.g., imdb_prefix10_rw / imdb_prefix10_pref_p2r.
 DATA_PATH=exp/imdb_exp/data/imdb_prefix10_rw
 # supported loss type: exo-pref / exo-rw / dpo-pref / dpo-rw
@@ -119,15 +119,15 @@ Other hyperparameters for training can be specified in `exp/imdb_exp/train_exo.s
 
 To train the policy using the DPO algorithm, simply change the `LOSS_TYPE` to either `dpo-pref` or `dpo-rw`.
 
-The model checkpoints will be saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/align_${LOSS_TYPE}_nc${$NUM_CONTRASTIVE}` by default.
+The model checkpoints will be saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/align_${LOSS_TYPE}_nc${$NUM_CONTRASTIVE}` by default.
 
 
 ### Inference
 
-To conduct inference using the checkpoints saved during training (default use the first 10 checkpoints), run the following command to decode using the model checkpoints saved in, e.g., `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/align_exo-rw_nc2/` with device ids `0,1`.
+To conduct inference using the checkpoints saved during training (default use the first 10 checkpoints), run the following command to decode using the model checkpoints saved in, e.g., `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/align_exo-rw_nc2/` with device ids `0,1`.
 
 ```bash
-bash exp/imdb_exp/inference_align.sh 0,1 /oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/align_exo-rw_nc2
+bash exp/imdb_exp/inference_align.sh 0,1 /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/align_exo-rw_nc2
 ```
 
 The inference results will be saved in `exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_exo-rw_nc2/`.
@@ -138,14 +138,14 @@ To calculate the log probabilities on the generated samples by the saved model c
 # path to the generated data to be evaluated
 EVAL_DATA_PATH="exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_exo-rw_nc2/ckpt1"
 # path to the model checkpoint 
-MODEL_PATH="/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/align_exo-rw_nc2/ckpt1"
+MODEL_PATH="/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/align_exo-rw_nc2/ckpt1"
 
 bash exp/imdb_exp/calc_logprobs.sh 0,1 $EVAL_DATA_PATH $MODEL_PATH
 ```
 
 The result will be saved in `logprobs_ckpt1.json` under the same directory of the generated samples.
 
-To calculate the log probabilities using the SFT model, simply change `MODEL_PATH="/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft`. The result will be saved in `logprobs_sft.json`.
+To calculate the log probabilities using the SFT model, simply change `MODEL_PATH="/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/sft`. The result will be saved in `logprobs_sft.json`.
 
 ### Evaluation
 
@@ -156,7 +156,7 @@ bash exp/imdb_exp/inference_class.sh \
 0,1 \
 exp/imdb_exp/data/imdb_prefix10_infer_res/models/gpt2-large_imdb/align_exo-rw_nc2/ckpt1 \
 test \
-/oss/zhanghangfan/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class \
+/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/gpt2-large_imdb/class \
 eval
 ```
 

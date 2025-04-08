@@ -45,28 +45,28 @@ bash exp/hh_exp/train_sft.sh pythia-2.8b /local/path/to/pythia-2.8b
 
 ### Generate from the SFT model
 
-Inference on the (whole) train and test set using the learned SFT model. Default sampling 2 completions given each prompt. The following commands are used to conduct inference on the train/test split using the trained SFT model saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft` (by default) with device ids `0,1,2,3`.
+Inference on the (whole) train and test set using the learned SFT model. Default sampling 2 completions given each prompt. The following commands are used to conduct inference on the train/test split using the trained SFT model saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft` (by default) with device ids `0,1,2,3`.
 
 ```bash
 # train set
-bash exp/hh_exp/inference_sft.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh train /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
+bash exp/hh_exp/inference_sft.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh train /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
 
 # test set
-bash exp/hh_exp/inference_sft.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
+bash exp/hh_exp/inference_sft.sh 0,1,2,3 hh/sft:exp/hh_exp/data/hh test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
 ```
 
 The generated data will be saved in `exp/hh_exp/data/hh_sft`.
 
 ### Compute reward by reward model
 
-Label the preference on the SFT generated data using the reward model. The following commands are used to conduct inference on the train/test split of the SFT generated dataset using the reward model saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm` with device ids `0,1,2,3`.
+Label the preference on the SFT generated data using the reward model. The following commands are used to conduct inference on the train/test split of the SFT generated dataset using the reward model saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm` with device ids `0,1,2,3`.
 
 ```bash
 # train set
-bash exp/hh_exp/inference_rm.sh 0,1,2,3 exp/hh_exp/data/hh_sft train /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm label
+bash exp/hh_exp/inference_rm.sh 0,1,2,3 exp/hh_exp/data/hh_sft train /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm label
 
 # test set
-bash exp/hh_exp/inference_rm.sh 0,1,2,3 exp/hh_exp/data/hh_sft test /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm label
+bash exp/hh_exp/inference_rm.sh 0,1,2,3 exp/hh_exp/data/hh_sft test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/rm label
 ```
 
 The inference results will be saved in `exp/hh_exp/data/hh_rw`.
@@ -89,7 +89,7 @@ Train the policy using the EXO algorithm, run commands:
 # Any causal HuggingFace model (`AutoModelForCausalLM` class)
 INIT_MODEL_NAME=pythia-2.8b
 # local path to the SFT model
-INIT_MODEL_PATH=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
+INIT_MODEL_PATH=/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/sft
 # local path to the training data, e.g., hh_rw / hh_p2r.
 DATA_PATH=exp/hh_exp/data/hh_rw
 # supported loss type: exo-pref / exo-rw / dpo-pref / dpo-rw
@@ -104,15 +104,15 @@ Other hyperparameters for training can be specified in `exp/hh_exp/train_exo.sh`
 
 To train the policy using the DPO algorithm, simply change the `LOSS_TYPE` to either `dpo-pref` or `dpo-rw`.
 
-The model checkpoints will be saved in `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/align_${LOSS_TYPE}_nc${$NUM_CONTRASTIVE}` by default.
+The model checkpoints will be saved in `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/align_${LOSS_TYPE}_nc${$NUM_CONTRASTIVE}` by default.
 
 
 ### Inference
 
-To conduct inference using the checkpoints saved during training (default use the first 10 checkpoints), run the following command to decode using the model checkpoints saved in, e.g., `/oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/align_exo-rw_nc2` with device ids `0,1,2,3`.
+To conduct inference using the checkpoints saved during training (default use the first 10 checkpoints), run the following command to decode using the model checkpoints saved in, e.g., `/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/align_exo-rw_nc2` with device ids `0,1,2,3`.
 
 ```bash
-bash exp/hh_exp/inference_align.sh 0,1,2,3 /oss/zhanghangfan/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/align_exo-rw_nc2
+bash exp/hh_exp/inference_align.sh 0,1,2,3 /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-2.8b_hh/align_exo-rw_nc2
 ```
 
 The inference results will be saved in `exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_exo-rw_nc2/`.

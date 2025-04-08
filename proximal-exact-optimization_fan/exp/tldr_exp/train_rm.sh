@@ -22,11 +22,11 @@ grad_accum=4
 wd=0
 ZERO_STAGE=2
 
-OUTPUT=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/$exp_name
+OUTPUT=/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/$exp_name
 
 
 if [ "$OUTPUT" == "" ]; then
-    OUTPUT=/oss/zhanghangfan/xsy/proximal-exact-optimization/models/$exp_name
+    OUTPUT=/fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/$exp_name
 fi
 
 if [ -d "$OUTPUT" ]; then
