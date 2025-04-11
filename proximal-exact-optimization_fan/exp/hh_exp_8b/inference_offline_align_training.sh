@@ -8,4 +8,4 @@ deepspeed --include "localhost:$1" \
                             --max_len 512 \
                             --max_new_tokens 200 \
                             --return_num 2 \
-                            --batch_size 128 \
+                            --batch_size 256 \
