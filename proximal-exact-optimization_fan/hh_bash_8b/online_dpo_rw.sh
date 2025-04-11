@@ -62,4 +62,4 @@ bash exp/hh_exp_8b/inference_rm_test.sh 0,1,2,3  /fs-computility/mabasic/zhangha
 
 bash exp/hh_exp_8b/inference_rm_test.sh 0,1,2,3  /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/llama-8b_hh/align_online_dpo-rw_nc2/ckpt5 test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/llama-8b_hh/rm eval
 
-python hh_bash/win_rate_computation.py online_dpo-rw
+python hh_bash_8b/win_rate_computation.py online_dpo-rw

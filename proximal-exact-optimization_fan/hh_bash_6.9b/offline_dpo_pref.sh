@@ -56,4 +56,4 @@ bash exp/hh_exp_6.9b/inference_rm_test.sh 0,1,2,3  /fs-computility/mabasic/zhang
 
 bash exp/hh_exp_6.9b/inference_rm_test.sh 0,1,2,3  /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-6.9b_hh/align_dpo-pref_nc2/ckpt5 test /fs-computility/mabasic/zhanghangfan/oss/xsy/proximal-exact-optimization/models/pythia-6.9b_hh/rm eval
 
-python hh_bash/win_rate_computation.py dpo-pref
+python hh_bash_6.9b/win_rate_computation.py dpo-pref
