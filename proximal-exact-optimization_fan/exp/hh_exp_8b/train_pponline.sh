@@ -15,7 +15,7 @@ tb_path=tb_logs
 dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 
 # general
-#train_bsz * grad_accum * num_gpus = 8 * 4 * 4 = 128
+#train_bsz * grad_accum * num_gpus = 4 * 4 * 8 = 128
 #step = number / (train_bsz  * num_gpus)= 43200 / ( 8 *4 )/5 = 1360/5 = 270
 port=1486
 train_bsz=4
@@ -25,7 +25,7 @@ max_gen_len=200
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=8
+grad_accum=4
 wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
