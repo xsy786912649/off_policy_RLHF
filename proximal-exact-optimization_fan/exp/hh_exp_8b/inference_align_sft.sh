@@ -19,7 +19,6 @@ deepspeed --include "localhost:$1" \
                         --temp $temp \
                         --data_name_path hh/sft:exp/hh_exp_8b/data/hh \
                         --max_length 512 \
-                        --max_new_tokens 500 \
                         --max_new_tokens 200 \
                         --batch_size 16 
 
