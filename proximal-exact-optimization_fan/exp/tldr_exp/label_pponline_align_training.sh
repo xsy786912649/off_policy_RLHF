@@ -5,6 +5,6 @@ deepspeed --include "localhost:$1" \
           --model_path $4 \
           --batch_size 128 \
           --mode $5 \
-          --max_length 512 \
+          --max_length 650 \
           --overwrite \
           --eval_num -1 \

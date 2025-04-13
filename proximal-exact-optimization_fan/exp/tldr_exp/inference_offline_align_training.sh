@@ -5,7 +5,7 @@ deepspeed --include "localhost:$1" \
                             --iteration $5 \
                             --prompt_num -1 \
                             --temp 0.8 \
-                            --max_len 512 \
-                            --max_new_tokens 200 \
+                            --max_len 650 \
+                            --max_new_tokens 75 \
                             --return_num 2 \
                             --batch_size 256 \

@@ -18,9 +18,8 @@ deepspeed --include "localhost:$1" \
                         --seed 42 \
                         --temp $temp \
                         --data_name_path tldr/sft:exp/tldr_exp/data/tldr \
-                        --max_length 512 \
-                        --max_new_tokens 500 \
-                        --max_new_tokens 200 \
+                        --max_length 650 \
+                        --max_new_tokens 75 \
                         --batch_size 16 
 
 

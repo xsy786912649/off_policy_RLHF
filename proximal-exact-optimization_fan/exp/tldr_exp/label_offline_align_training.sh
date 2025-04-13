@@ -4,7 +4,7 @@ deepspeed --include "localhost:$1" \
           --split $3 \
           --model_path $4 \
           --batch_size 128 \
-          --max_length 512 \
+          --max_length 650 \
           --eval_num -1 \
           --overwrite \
           --mode $5 \
