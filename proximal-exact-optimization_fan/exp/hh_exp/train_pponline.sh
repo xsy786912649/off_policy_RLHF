@@ -34,7 +34,7 @@ max_iter_step=-1
 
 # alignment config
 beta_r=0.1
-beta_pi=1.0
+beta_pi=0.75
 temp=0.8
 detla_beta_model=1.0
 
