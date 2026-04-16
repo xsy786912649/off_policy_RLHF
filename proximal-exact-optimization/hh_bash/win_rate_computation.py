@@ -10,10 +10,10 @@ loss_type = sys.argv[1]
 print("--------------------")
 print("loss_type",loss_type)
 print("--------------------")
-path1="exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/sft/eval/test.json"
+path1="models/pythia-2.8b_hh/sft/eval/test.json"
 path11="exp/hh_exp/data/hh/eval/test.json"
 for i in [1,2,3,4,5]:
-    path2="exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_"+loss_type+"_nc2/ckpt"+str(i)+"/eval/test.json"
+    path2="models/pythia-2.8b_hh/align_"+loss_type+"_nc2/ckpt"+str(i)+"/eval/test.json"
 
     data = json.load(open(path1, "r"))
     data1 = json.load(open(path11, "r"))

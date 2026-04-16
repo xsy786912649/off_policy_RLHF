@@ -19,9 +19,10 @@ deepspeed --include "localhost:$1" \
                         --temp $temp \
                         --data_name_path hh/sft:exp/hh_exp/data/hh \
                         --max_length 512 \
-                        --max_new_tokens 500 \
                         --max_new_tokens 200 \
                         --batch_size 16 
 
-# bash exp/hh_exp/inference_align_sft.sh 0,1,2,3 models/pythia-2.8b_hh/sft
-# bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh test models/pythia-2.8b_hh/rm eval
+
+#bash exp/hh_exp/inference_align_sft.sh 0,1,2,3 models/pythia-2.8b_hh/sft
+#bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 models/pythia-2.8b_hh/sft test models/pythia-2.8b_hh/rm eval
+#bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh test models/pythia-2.8b_hh/rm eval

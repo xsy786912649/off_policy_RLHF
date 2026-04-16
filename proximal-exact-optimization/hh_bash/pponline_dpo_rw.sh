@@ -51,14 +51,14 @@ bash exp/hh_exp/train_pponline.sh 0,1,2,3 pythia-2.8b models/pythia-2.8b_hh/alig
 
 bash exp/hh_exp/inference_align.sh 0,1,2,3 models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2 
 
-bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt1 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 0,1,2,3  models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt1 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt2 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 0,1,2,3  models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt2 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt3 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 0,1,2,3  models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt3 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt4 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 0,1,2,3  models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt4 test models/pythia-2.8b_hh/rm eval
 
-bash exp/hh_exp/inference_rm_test.sh 0,1,2,3 exp/hh_exp/data/hh_infer_res/models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt5 test models/pythia-2.8b_hh/rm eval
+bash exp/hh_exp/inference_rm_test.sh 0,1,2,3  models/pythia-2.8b_hh/align_online_pp-dpo-rw_nc2/ckpt5 test models/pythia-2.8b_hh/rm eval
 
 python hh_bash/win_rate_computation.py online_pp-dpo-rw
