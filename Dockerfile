@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install \
     "transformers==4.45.0" \
     "numpy==1.26.4" \
-    "datasets==2.13.2" \
+    "datasets==2.20.0" \
     "tensorboard" \
     "tqdm" \
     "huggingface_hub" \
