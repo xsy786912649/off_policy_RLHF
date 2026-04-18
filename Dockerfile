@@ -61,11 +61,8 @@ WORKDIR /workspace/proximal-exact-optimization
 # ── Smoke-test: verify all key imports resolve correctly ─────────────────────
 RUN python - <<'EOF'
 import torch, transformers, deepspeed, datasets
-from transformers import (
-    AutoModelForCausalLM, AutoTokenizer,
-    GPTNeoXLayer,                          # Pythia models
-)
-from transformers.integrations.deepspeed import HfDeepSpeedConfig  # DeepSpeed integration
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers.integrations.deepspeed import HfDeepSpeedConfig
 print(f"torch        {torch.__version__}")
 print(f"transformers {transformers.__version__}")
 print(f"deepspeed    {deepspeed.__version__}")
