@@ -29,6 +29,10 @@ class RewardModel(nn.Module):
         self.PAD_ID = tokenizer.pad_token_id
         self.compute_fp32_loss = compute_fp32_loss
     
+    @property
+    def device(self):
+        return next(self.parameters()).device
+
     def gradient_checkpointing_enable(self):
         self.rwtransformer.gradient_checkpointing_enable()
 
