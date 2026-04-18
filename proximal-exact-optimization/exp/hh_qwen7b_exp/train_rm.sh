@@ -9,16 +9,16 @@ tb_path=tb_logs
 exp_name=${init_model_name}_hh/rm
 
 
-dev=0,1,2
+dev=0,1,2,3,4,5,6,7
 port=1235
-train_bsz=4
-eval_bsz=8
+train_bsz=16
+eval_bsz=16
 max_len=512
 max_gen_len=200
 lr=1e-5
 wm_steps=0
 eps=1
-grad_accum=4
+grad_accum=1
 wd=0
 ZERO_STAGE=2
 
