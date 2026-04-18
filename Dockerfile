@@ -22,7 +22,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
-    CUDA_HOME=/usr/local/cuda
+    CUDA_HOME=/usr/local/cuda \
+    PATH=/opt/conda/bin:$PATH
 
 # ── System dependencies ───────────────────────────────────────────────────────
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -50,13 +51,11 @@ RUN pip install \
 RUN DS_BUILD_FUSED_ADAM=1 DS_BUILD_TRANSFORMER=1 \
     pip install "deepspeed==0.16.3"
 
-# ── Copy both codebases ───────────────────────────────────────────────────────
+# ── Copy entire repo ─────────────────────────────────────────────────────────
 WORKDIR /workspace
-COPY exact-optimization/              /workspace/exact-optimization/
-COPY proximal-exact-optimization/     /workspace/proximal-exact-optimization/
+COPY . /workspace/off_policy_RLHF/
 
-# Default working directory is the PRPO codebase
-WORKDIR /workspace/proximal-exact-optimization
+WORKDIR /workspace/off_policy_RLHF/proximal-exact-optimization
 
 # ── Smoke-test: verify all key imports resolve correctly ─────────────────────
 RUN python - <<'EOF'
