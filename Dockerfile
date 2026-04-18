@@ -16,7 +16,7 @@
 #  Base: PyTorch 2.4.1 + CUDA 12.1 + cuDNN 9 (devel = includes nvcc for
 #        DeepSpeed CUDA extension compilation)
 # ──────────────────────────────────────────────────────────────────────────────
-FROM pytorch/pytorch:2.4.1-cuda12.1-cudnn9-devel
+FROM pytorch/pytorch:2.4.1-cuda12.4-cudnn9-devel
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
