@@ -1,3 +1,4 @@
+import inspect
 import torch
 from torch import nn
 
@@ -53,10 +54,8 @@ class RewardModel(nn.Module):
                                   use_cache=use_cache)
 
 
-        if self.config.model_type == "llama":
-            kwargs = dict()
-        else:
-            kwargs = dict(head_mask=head_mask)
+        _fwd_params = inspect.signature(self.rwtransformer.forward).parameters
+        kwargs = dict(head_mask=head_mask) if 'head_mask' in _fwd_params else dict()
 
         transformer_outputs = self.rwtransformer(
             input_ids,
@@ -158,10 +157,8 @@ class RewardModel(nn.Module):
                        #prompt_length=0,
                        use_cache=False):
         
-        if self.config.model_type == "llama":
-            kwargs = dict()
-        else:
-            kwargs = dict(head_mask=head_mask)
+        _fwd_params = inspect.signature(self.rwtransformer.forward).parameters
+        kwargs = dict(head_mask=head_mask) if 'head_mask' in _fwd_params else dict()
 
         transformer_outputs = self.rwtransformer(
             input_ids,
