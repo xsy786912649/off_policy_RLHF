@@ -33,6 +33,9 @@ class RewardModel(nn.Module):
     def device(self):
         return next(self.parameters()).device
 
+    def can_generate(self):
+        return False
+
     def gradient_checkpointing_enable(self):
         self.rwtransformer.gradient_checkpointing_enable()
 
