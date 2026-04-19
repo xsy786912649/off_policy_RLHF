@@ -51,14 +51,14 @@ bash exp/hh_qwen14b_exp/train_pponline.sh 0,1,2,3,4,5,6,7 qwen2.5-14b models/qwe
 
 bash exp/hh_qwen14b_exp/inference_align.sh 0,1,2,3,4,5,6,7 models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2
 
-bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt1 test models/qwen2.5-14b_hh/rm eval
+bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen14b_exp/data/hh_infer_res/models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt1 test models/qwen2.5-14b_hh/rm eval
 
-bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt2 test models/qwen2.5-14b_hh/rm eval
+bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen14b_exp/data/hh_infer_res/models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt2 test models/qwen2.5-14b_hh/rm eval
 
-bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt3 test models/qwen2.5-14b_hh/rm eval
+bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen14b_exp/data/hh_infer_res/models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt3 test models/qwen2.5-14b_hh/rm eval
 
-bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt4 test models/qwen2.5-14b_hh/rm eval
+bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen14b_exp/data/hh_infer_res/models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt4 test models/qwen2.5-14b_hh/rm eval
 
-bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt5 test models/qwen2.5-14b_hh/rm eval
+bash exp/hh_qwen14b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen14b_exp/data/hh_infer_res/models/qwen2.5-14b_hh/align_online_pp-exo-rw_nc2/ckpt5 test models/qwen2.5-14b_hh/rm eval
 
 python hh_bash_qwen14b/win_rate_computation.py online_pp-exo-rw

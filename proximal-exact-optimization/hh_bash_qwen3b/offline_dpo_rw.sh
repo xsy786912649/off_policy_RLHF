@@ -46,14 +46,14 @@ bash exp/hh_qwen3b_exp/train_offline.sh 0,1,2,3,4,5,6,7 qwen2.5-3b models/qwen2.
 
 bash exp/hh_qwen3b_exp/inference_align.sh 0,1,2,3,4,5,6,7 models/qwen2.5-3b_hh/align_dpo-rw_nc2
 
-bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt1 test models/qwen2.5-3b_hh/rm eval
+bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen3b_exp/data/hh_infer_res/models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt1 test models/qwen2.5-3b_hh/rm eval
 
-bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt2 test models/qwen2.5-3b_hh/rm eval
+bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen3b_exp/data/hh_infer_res/models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt2 test models/qwen2.5-3b_hh/rm eval
 
-bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt3 test models/qwen2.5-3b_hh/rm eval
+bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen3b_exp/data/hh_infer_res/models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt3 test models/qwen2.5-3b_hh/rm eval
 
-bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt4 test models/qwen2.5-3b_hh/rm eval
+bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen3b_exp/data/hh_infer_res/models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt4 test models/qwen2.5-3b_hh/rm eval
 
-bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt5 test models/qwen2.5-3b_hh/rm eval
+bash exp/hh_qwen3b_exp/inference_rm_test.sh 0,1,2,3,4,5,6,7  exp/hh_qwen3b_exp/data/hh_infer_res/models/qwen2.5-3b_hh/align_dpo-rw_nc2/ckpt5 test models/qwen2.5-3b_hh/rm eval
 
 python hh_bash_qwen3b/win_rate_computation.py dpo-rw
