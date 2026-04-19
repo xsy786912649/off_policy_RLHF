@@ -1,3 +1,9 @@
+LOGDIR="logs"
+mkdir -p "$LOGDIR"
+LOGFILE="$LOGDIR/$(basename "$0" .sh)_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOGFILE") 2>&1
+echo "=== $(date) | $(basename "$0") ===" 
+
 #1.1
 bash exp/hh_qwen7b_exp/inference_pponline_align_training.sh 0,1,2,3,4,5,6,7 hh/sft:exp/hh_qwen7b_exp/data/hh train models/qwen2.5-7b_hh/sft 1
 

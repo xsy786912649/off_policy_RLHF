@@ -1,3 +1,9 @@
+LOGDIR="logs"
+mkdir -p "$LOGDIR"
+LOGFILE="$LOGDIR/$(basename "$0" .sh)_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOGFILE") 2>&1
+echo "=== $(date) | $(basename "$0") ===" 
+
 # Run once before win_rate_computation.py to generate reference baselines.
 # Requires: SFT and RM already trained.
 
