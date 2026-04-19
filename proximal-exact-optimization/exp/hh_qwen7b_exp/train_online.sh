@@ -18,14 +18,14 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 #train_bsz * grad_accum * num_gpus = 4 * 4 * 8 = 128
 #step = number / (train_bsz  * num_gpus)= 43200 / ( 4 * 3 )/5 = 3600/5 = 720
 port=1486
-train_bsz=16
-eval_bsz=16
+train_bsz=8
+eval_bsz=8
 max_len=512
 max_gen_len=200
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=1
+grad_accum=2
 wd=0
 ZERO_STAGE=2
 num_save_checkpoint=-1
