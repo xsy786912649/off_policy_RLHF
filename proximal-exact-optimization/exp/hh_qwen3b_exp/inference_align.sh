@@ -22,6 +22,6 @@ do
                             --data_name_path hh/sft:exp/hh_qwen3b_exp/data/hh \
                             --max_length 512 \
                             --max_new_tokens 200 \
-                            --batch_size 16 \
+                            --batch_size 128 \
 
 done
