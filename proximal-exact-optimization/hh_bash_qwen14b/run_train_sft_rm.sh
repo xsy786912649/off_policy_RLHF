@@ -4,8 +4,9 @@ LOGFILE="$LOGDIR/$(basename "$0" .sh)_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOGFILE") 2>&1
 echo "=== $(date) | $(basename "$0") ==="
 
-# Step 1: preprocess
-python exp/hh_qwen14b_exp/preproc.py
+# Step 1: reuse preprocessed HH data from 3B (same dataset)
+mkdir -p exp/hh_qwen14b_exp/data
+cp -r exp/hh_qwen3b_exp/data/hh exp/hh_qwen14b_exp/data/hh
 
 # Step 2: SFT
 bash exp/hh_qwen14b_exp/train_sft.sh qwen2.5-14b models/Qwen2.5-14B
