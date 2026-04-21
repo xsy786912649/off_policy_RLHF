@@ -374,15 +374,22 @@ def main():
         model = convert_lora_to_linear_layer(model)
     
 
-        if args.global_rank == 0:
-            save_hf_format(model, tokenizer, args, model_name_or_path=args.model_name_or_path)
-
         if args.zero_stage == 3:
-            # For zero stage 3, each gpu only has a part of the model, so we need a special save function
-            save_zero_three_model(model,
-                                  args.global_rank,
-                                  args.output_dir,
+            # For ZeRO-3: rank-0's state_dict() only contains its local shard (shape [0]),
+            # so save_hf_format would write broken weights.
+            # Save config/tokenizer on rank 0, gather weights from all ranks.
+            if args.global_rank == 0:
+                model_to_save = model.module if hasattr(model, 'module') else model
+                os.makedirs(args.output_dir, exist_ok=True)
+                model_to_save.config.to_json_file(
+                    os.path.join(args.output_dir, "config.json"))
+                tokenizer.save_pretrained(args.output_dir)
+            save_zero_three_model(model, args.global_rank, args.output_dir,
                                   zero_stage=args.zero_stage)
+        else:
+            if args.global_rank == 0:
+                save_hf_format(model, tokenizer, args,
+                               model_name_or_path=args.model_name_or_path)
 
 if __name__ == "__main__":
     main()
