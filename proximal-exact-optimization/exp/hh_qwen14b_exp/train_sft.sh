@@ -19,7 +19,7 @@ wm_steps=0
 eps=1
 grad_accum=1
 wd=0
-ZERO_STAGE=3
+ZERO_STAGE=2
 
 OUTPUT=models/$exp_name
 
