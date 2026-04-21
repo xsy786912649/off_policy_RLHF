@@ -38,21 +38,11 @@ def save_model(args, model, tokenizer, sub_folder):
     print_rank_0('saving model ...', args.global_rank)
     model = convert_lora_to_linear_layer(model)
 
+    if args.global_rank == 0:
+        save_hf_format(model, tokenizer, args, sub_folder=sub_folder)
     if args.zero_stage == 3:
-        # For ZeRO-3: save config/tokenizer to sub_folder on rank 0.
-        # Weights are gathered from all ranks into output_dir/pytorch_model.bin (root).
-        # consolidate_zero3.sh then copies root weights into sub_folder/.
-        if args.global_rank == 0:
-            model_to_save = model.module if hasattr(model, 'module') else model
-            output_dir = os.path.join(args.output_dir, sub_folder)
-            os.makedirs(output_dir, exist_ok=True)
-            model_to_save.config.to_json_file(os.path.join(output_dir, "config.json"))
-            tokenizer.save_pretrained(output_dir)
         save_zero_three_model(model, args.global_rank, args.output_dir,
                               zero_stage=args.zero_stage)
-    else:
-        if args.global_rank == 0:
-            save_hf_format(model, tokenizer, args, sub_folder=sub_folder)
 
 def parse_args():
     parser = argparse.ArgumentParser(
