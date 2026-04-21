@@ -19,7 +19,7 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 #step = number / (train_bsz  * num_gpus)= 43200 / ( 2 * 3 )/5 = 7200/5 = 1440
 port=1486
 train_bsz=4
-eval_bsz=8
+eval_bsz=4
 max_len=512
 max_gen_len=200
 lr=1e-6
@@ -27,7 +27,7 @@ wm_steps=0
 eps=1
 grad_accum=4
 wd=0
-ZERO_STAGE=2
+ZERO_STAGE=3
 num_save_checkpoint=-1
 save_step_interval=-1
 max_iter_step=-1
@@ -80,4 +80,5 @@ src/align_stage/train_offline.py \
    --gradient_checkpointing \
    --print_loss \
    --zero_stage $ZERO_STAGE \
+   --offload_optimizer \
    --deepspeed 2>&1 | tee -a $OUTPUT/training.log

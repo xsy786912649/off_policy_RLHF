@@ -27,7 +27,7 @@ wm_steps=0
 eps=1
 grad_accum=8
 wd=0
-ZERO_STAGE=2
+ZERO_STAGE=3
 num_save_checkpoint=-1
 save_step_interval=-1
 max_iter_step=-1
@@ -82,4 +82,5 @@ src/align_stage/train_pponline.py \
    --gradient_checkpointing \
    --print_loss \
    --zero_stage $ZERO_STAGE \
+   --offload_optimizer \
    --deepspeed 2>&1 | tee -a $OUTPUT/training.log

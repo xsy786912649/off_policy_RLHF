@@ -38,11 +38,22 @@ def save_model(args, model, tokenizer, sub_folder):
     print_rank_0('saving model ...', args.global_rank)
     model = convert_lora_to_linear_layer(model)
 
-    if args.global_rank == 0:
-        save_hf_format(model, tokenizer, args, sub_folder=sub_folder)
     if args.zero_stage == 3:
-        save_zero_three_model(model, args.global_rank, args.output_dir,
-                              zero_stage=args.zero_stage)
+        save_dir = os.path.join(args.output_dir, sub_folder)
+        if args.global_rank == 0:
+            os.makedirs(save_dir, exist_ok=True)
+        torch.distributed.barrier()
+        model.save_checkpoint(save_dir)
+        torch.distributed.barrier()
+        if args.global_rank == 0:
+            from deepspeed.utils.zero_to_fp32 import get_fp32_state_dict_from_zero_checkpoint
+            state_dict = get_fp32_state_dict_from_zero_checkpoint(save_dir)
+            torch.save(state_dict, os.path.join(save_dir, "pytorch_model.bin"))
+            model.module.config.to_json_file(os.path.join(save_dir, "config.json"))
+            tokenizer.save_pretrained(save_dir)
+    else:
+        if args.global_rank == 0:
+            save_hf_format(model, tokenizer, args, sub_folder=sub_folder)
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -210,6 +221,9 @@ def parse_args():
     parser.add_argument('--offload',
                         action='store_true',
                         help='Enable ZeRO Offload techniques.')
+    parser.add_argument('--offload_optimizer',
+                        action='store_true',
+                        help='Offload optimizer states to CPU only (keeps model params on GPU).')
     parser.add_argument('--dtype',
                         type=str,
                         default='fp16',
@@ -290,13 +304,18 @@ def main():
                                     enable_tensorboard=args.enable_tensorboard,
                                     tb_path=tb_path,
                                     tb_name=tb_name)
-    
+    if args.offload_optimizer:
+        ds_config['zero_optimization']['offload_optimizer'] = {
+            'device': 'cpu',
+            'pin_memory': True
+        }
+
     ds_config[
         'train_micro_batch_size_per_gpu'] = args.per_device_train_batch_size
     ds_config[
         'train_batch_size'] = args.per_device_train_batch_size * torch.distributed.get_world_size(
         ) * args.gradient_accumulation_steps
-    
+
 
     set_random_seed(args.seed)
 
@@ -361,7 +380,7 @@ def main():
     optimizer_grouped_parameters = get_optimizer_grouped_parameters(
         model, args.weight_decay, args.lora_learning_rate)
 
-    AdamOptimizer = DeepSpeedCPUAdam if args.offload else FusedAdam
+    AdamOptimizer = DeepSpeedCPUAdam if (args.offload or args.offload_optimizer) else FusedAdam
     optimizer = AdamOptimizer(optimizer_grouped_parameters,
                             lr=args.learning_rate,
                             betas=(0.9, 0.95))
@@ -383,13 +402,10 @@ def main():
         lr_scheduler=lr_scheduler,
         dist_init_required=True)
     
-    ref_engine = deepspeed.init_inference(
-            ref_model,
-            tensor_parallel={"tp_size": 1,},
-            dtype=DTYPE_MAP[args.dtype],
-            replace_with_kernel_inject=args.kernel_inject,
-        )
-    ref_model = ref_engine.module
+    # Move reference model to GPU for inference (no deepspeed wrapper needed).
+    # With ZeRO-3 + offload_optimizer the training engine only occupies ~7GB per GPU,
+    # leaving ample room for the 14B fp16 reference model (28GB) within 80GB.
+    ref_model = ref_model.to(device).eval()
 
     if args.gradient_checkpointing:
         model.gradient_checkpointing_enable()
