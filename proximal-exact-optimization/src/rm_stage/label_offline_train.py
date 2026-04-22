@@ -101,8 +101,8 @@ def main():
     if not os.path.isfile(os.path.join(save_path, args.split + ".json")) or args.overwrite:
 
         pipe = RewardModelPipeline(model=model,
-                                    tokenizer=tokenizer, 
-                                    device=args.local_rank)
+                                    tokenizer=tokenizer,
+                                    device=torch.device("cuda", args.local_rank))
         
         # init by deepspeed
         pipe.model = deepspeed.init_inference(

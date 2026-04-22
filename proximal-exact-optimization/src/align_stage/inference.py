@@ -81,10 +81,10 @@ def main():
                                    args.max_new_tokens,
                                    inference=True) # only this matters
     
-    pipe = pipeline(task="text-generation", 
-                    model=args.model_path, 
-                    tokenizer=tokenizer, 
-                    device=args.local_rank)
+    pipe = pipeline(task="text-generation",
+                    model=args.model_path,
+                    tokenizer=tokenizer,
+                    device=torch.device("cuda", args.local_rank))
     
     # kernel inject is only needed for gpt-2
     # See supported models for automatic tensor paralleism

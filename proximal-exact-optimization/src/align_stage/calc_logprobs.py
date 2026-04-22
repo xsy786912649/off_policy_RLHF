@@ -108,7 +108,7 @@ def main():
     # create pipe
     model_pipe = LogprobsPipeline(model=model,
                                 tokenizer=tokenizer,
-                                device=args.local_rank)
+                                device=torch.device("cuda", args.local_rank))
     
     model_pipe.model = deepspeed.init_inference(
         model_pipe.model,
