@@ -18,14 +18,14 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 # general
 #train_bsz * grad_accum * num_gpus = 4 * 4 * 8 = 128
 port=1686
-train_bsz=4
+train_bsz=2
 eval_bsz=4
 max_len=650
 max_gen_len=75
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=4
+grad_accum=8
 wd=0
 ZERO_STAGE=3
 num_save_checkpoint=-1
@@ -81,4 +81,5 @@ src/align_stage/train_pponline.py \
    --gradient_checkpointing \
    --print_loss \
    --zero_stage $ZERO_STAGE \
+   --offload_optimizer \
    --deepspeed 2>&1 | tee -a $OUTPUT/training.log

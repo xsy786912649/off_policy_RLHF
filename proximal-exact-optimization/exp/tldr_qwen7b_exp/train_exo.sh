@@ -16,14 +16,14 @@ dataset_abbr=$( echo $dataset_name | cut -d'/' -f1 )
 # general
 dev=0,1,2,3,4,5,6,7
 port=1781
-train_bsz=8
-eval_bsz=8
+train_bsz=4
+eval_bsz=4
 max_len=650
 max_gen_len=75
 lr=1e-6
 wm_steps=0
 eps=1
-grad_accum=2
+grad_accum=4
 wd=0
 ZERO_STAGE=3
 num_save_checkpoint=20
@@ -76,4 +76,5 @@ src/align_stage/train.py \
    --gradient_checkpointing \
    --print_loss \
    --zero_stage $ZERO_STAGE \
+   --offload_optimizer \
    --deepspeed 2>&1 | tee -a $OUTPUT/training.log
